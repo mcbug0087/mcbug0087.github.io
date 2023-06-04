@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
-<head lang="en">
+<head lang="zh">
     <meta charset="ANSL">
     <title></title>
-    <!-- ÒıÈë×ÖÌåÍ¼±êµÄÎÄ¼ş-->
+    <!-- å¼•å…¥å­—ä½“å›¾æ ‡çš„æ–‡ä»¶-->
     <link rel="stylesheet" href="css/font-awesome.min.css"/>
     <style>
         *{
             margin: 0;
             padding: 0;
         }
-        /*¶àÃ½Ìå±êÌâ*/
+        /*å¤šåª’ä½“æ ‡é¢˜*/
         figcaption{
             text-align: center;
             line-height: 150px;
@@ -18,7 +18,7 @@
             font-size:24px;
         }
 
-        /* ²¥·ÅÆ÷*/
+        /* æ’­æ”¾å™¨*/
         .palyer{
             width: 720px;
             height: 360px;
@@ -38,7 +38,7 @@
             /*display: none;*/
         }
 
-        /* ¿ØÖÆÌõ*/
+        /* æ§åˆ¶æ¡*/
 
         .controls{
             width: 700px;
@@ -49,7 +49,7 @@
             left:10px;
             border-radius: 10px;
         }
-        /*¿ª¹Ø*/
+        /*å¼€å…³*/
         .switch{
             position: absolute;
             width: 20px;
@@ -62,7 +62,7 @@
             color:yellow;
 
         }
-        /*½ø¶ÈÌõ*/
+        /*è¿›åº¦æ¡*/
         .progress{
             width: 432px;
             height: 10px;
@@ -73,13 +73,13 @@
             border-radius: 4px;
             overflow: hidden;
         }
-        /* µ±Ç°½ø¶È*/
+        /* å½“å‰è¿›åº¦*/
         .curr-progress{
             width: 50%;
             height: 10px;
             background-color: #fff;
         }
-        /* Ê±¼äÄ£¿é*/
+        /* æ—¶é—´æ¨¡å—*/
         .time{
             width: 120px;
             height: 20px;
@@ -92,7 +92,7 @@
             font-size:12px;
 
         }
-        /*È«ÆÁ*/
+        /*å…¨å±*/
         .extend{
             position: absolute;
             width: 20px;
@@ -109,25 +109,25 @@
     </style>
 </head>
 <body>
-    <!-- ¶àÃ½Ìå-->
+    <!-- å¤šåª’ä½“-->
     <figure>
-        <!--  ¶àÃ½Ìå±êÌâ-->
-        <figcaption>ÎäÆ÷A</figcaption>
+        <!--  å¤šåª’ä½“æ ‡é¢˜-->
+        <figcaption>æ­¦å™¨A</figcaption>
         <div class="palyer">
             <video src="./WPA.mp4"></video>
-            <!-- ¿ØÖÆÌõ-->
+            <!-- æ§åˆ¶æ¡-->
             <div class="controls">
-                <!-- ²¥·ÅÔİÍ£-->
+                <!-- æ’­æ”¾æš‚åœ-->
                 <a href="#" class="switch  icon-play"></a>
                 <div class="progress">
-                    <!-- µ±Ç°½ø¶È-->
+                    <!-- å½“å‰è¿›åº¦-->
                     <div class="curr-progress"></div>
                 </div>
-                <!-- Ê±¼ä-->
+                <!-- æ—¶é—´-->
                 <div class="time">
                     <span class="curr-time">00:00:00</span>/<span class="total-time">00:00:00</span>
                 </div>
-                <!-- È«ÆÁ-->
+                <!-- å…¨å±-->
                 <a href="#" class="extend  icon-resize-full"></a>
             </div>
 
@@ -135,67 +135,67 @@
     </figure>
 
     <script>
-        // Ë¼Â·£º
+        // æ€è·¯ï¼š
         /*
-        * 1¡¢µã»÷°´Å¥ ÊµÏÖ²¥·ÅÔİÍ£²¢ÇÒÇĞ»»Í¼±ê
-        * 2¡¢Ëã³öÊÓÆµµÄ×ÜÊ±ÏÔÊ¾³ö³öÀ´
-        * 3¡¢µ±ÊÓÆµ²¥·ÅµÄÊ±ºò£¬½ø¶ÈÌõÍ¬²½£¬µ±Ç°Ê±¼äÍ¬²½
-        * 4¡¢µã»÷ÊµÏÖÈ«ÆÁ
+        * 1ã€ç‚¹å‡»æŒ‰é’® å®ç°æ’­æ”¾æš‚åœå¹¶ä¸”åˆ‡æ¢å›¾æ ‡
+        * 2ã€ç®—å‡ºè§†é¢‘çš„æ€»æ—¶æ˜¾ç¤ºå‡ºå‡ºæ¥
+        * 3ã€å½“è§†é¢‘æ’­æ”¾çš„æ—¶å€™ï¼Œè¿›åº¦æ¡åŒæ­¥ï¼Œå½“å‰æ—¶é—´åŒæ­¥
+        * 4ã€ç‚¹å‡»å®ç°å…¨å±
         */
 
-//        »ñÈ¡ĞèÒªµÄ±êÇ©
+//        è·å–éœ€è¦çš„æ ‡ç­¾
             var  video=document.querySelector('video');
-//          ²¥·Å°´Å¥
+//          æ’­æ”¾æŒ‰é’®
             var  playBtn=document.querySelector('.switch');
-//          µ±Ç°½ø¶ÈÌõ
+//          å½“å‰è¿›åº¦æ¡
             var  currProgress=document.querySelector('.curr-progress');
-//          µ±Ç°Ê±¼ä
+//          å½“å‰æ—¶é—´
             var  currTime=document.querySelector('.curr-time');
-//          ×ÜÊ±¼ä
+//          æ€»æ—¶é—´
             var  totalTime=document.querySelector('.total-time');
-//          È«ÆÁ
+//          å…¨å±
             var extend=document.querySelector('.extend');
 
             var tTime=0;
 
-//         1¡¢µã»÷°´Å¥ ÊµÏÖ²¥·ÅÔİÍ£²¢ÇÒÇĞ»»Í¼±ê
+//         1ã€ç‚¹å‡»æŒ‰é’® å®ç°æ’­æ”¾æš‚åœå¹¶ä¸”åˆ‡æ¢å›¾æ ‡
 
            playBtn.onclick=function(){
-//               Èç¹ûÊÓÆµ²¥·Å ¾ÍÔİÍ££¬Èç¹ûÔİÍ£ ¾Í²¥·Å
+//               å¦‚æœè§†é¢‘æ’­æ”¾ å°±æš‚åœï¼Œå¦‚æœæš‚åœ å°±æ’­æ”¾
                if(video.paused){
-//                   ²¥·Å
+//                   æ’­æ”¾
                    video.play();
-                   //ÇĞ»»Í¼±ê
+                   //åˆ‡æ¢å›¾æ ‡
                    this.classList.remove('icon-play');
                    this.classList.add('icon-pause');
                }else{
-//                   ÔİÍ£
+//                   æš‚åœ
                     video.pause();
-//                   ÇĞ»»Í¼±ê
+//                   åˆ‡æ¢å›¾æ ‡
                    this.classList.remove('icon-pause');
                    this.classList.add('icon-play');}
            }
 
-//        2¡¢Ëã³öÊÓÆµµÄ×ÜÊ±ÏÔÊ¾³ö³öÀ´
-//        µ±Ê±¼ÓÔØÍê³ÉºóµÄÊÂ¼ş£¬ÊÓÆµÄÜ²¥·ÅµÄÊ±ºò
+//        2ã€ç®—å‡ºè§†é¢‘çš„æ€»æ—¶æ˜¾ç¤ºå‡ºå‡ºæ¥
+//        å½“æ—¶åŠ è½½å®Œæˆåçš„äº‹ä»¶ï¼Œè§†é¢‘èƒ½æ’­æ”¾çš„æ—¶å€™
         video.oncanplay=function(){
-//             »ñÈ¡ÊÓÆµ×ÜÊ±³¤
+//             è·å–è§†é¢‘æ€»æ—¶é•¿
             tTime=video.duration;
             console.log(tTime);
 
-//          ½«×ÜÃëÊı ×ª»»³É Ê±·ÖÃëµÄ¸ñÊ½£º00£º00:00
-//            Ğ¡Ê±
+//          å°†æ€»ç§’æ•° è½¬æ¢æˆ æ—¶åˆ†ç§’çš„æ ¼å¼ï¼š00ï¼š00:00
+//            å°æ—¶
             var h=Math.floor(tTime/3600);
-//            ·ÖÖÓ
+//            åˆ†é’Ÿ
             var m=Math.floor(tTime%3600/60);
-//            Ãë
+//            ç§’
             var s=Math.floor(tTime%60);
 
 //            console.log(h);
 //            console.log(m);
 //            console.log(s);
 
-//            °ÑÊı¾İ¸ñÊ½×ª³É 00:00£º00
+//            æŠŠæ•°æ®æ ¼å¼è½¬æˆ 00:00ï¼š00
             h=h>=10?h:"0"+h;
             m=m>=10?m:"0"+m;
             s=s>=10?s:"0"+s;
@@ -204,42 +204,42 @@
             console.log(h);
             console.log(m);
             console.log(s);
-//            ÏÔÊ¾³öÀ´
+//            æ˜¾ç¤ºå‡ºæ¥
             totalTime.innerHTML=h+":"+m+":"+s;
         }
-//   * 3¡¢µ±ÊÓÆµ²¥·ÅµÄÊ±ºò£¬½ø¶ÈÌõÍ¬²½£¬µ±Ç°Ê±¼äÍ¬²½
-//         µ±Ê±µ±Ç°Ê±¼ä¸üĞÂµÄÊ±ºò´¥·¢
+//   * 3ã€å½“è§†é¢‘æ’­æ”¾çš„æ—¶å€™ï¼Œè¿›åº¦æ¡åŒæ­¥ï¼Œå½“å‰æ—¶é—´åŒæ­¥
+//         å½“æ—¶å½“å‰æ—¶é—´æ›´æ–°çš„æ—¶å€™è§¦å‘
         video.ontimeupdate=function(){
-//            »ñÈ¡ÊÓÆµµ±Ç°²¥·ÅµÄÊ±¼ä
+//            è·å–è§†é¢‘å½“å‰æ’­æ”¾çš„æ—¶é—´
 //           console.log(video.currentTime);
-//            µ±Ç°²¥·ÅÊ±¼ä
+//            å½“å‰æ’­æ”¾æ—¶é—´
             var cTime=video.currentTime;
-//           °Ñ¸ñÊ½×ª³É00:00:00
+//           æŠŠæ ¼å¼è½¬æˆ00:00:00
 
             var h=Math.floor(cTime/3600);
-//            ·ÖÖÓ
+//            åˆ†é’Ÿ
             var m=Math.floor(cTime%3600/60);
-//            Ãë
+//            ç§’
             var s=Math.floor(cTime%60);
 
-//            °ÑÊı¾İ¸ñÊ½×ª³É 00:00£º00
+//            æŠŠæ•°æ®æ ¼å¼è½¬æˆ 00:00ï¼š00
             h=h>=10?h:"0"+h;
             m=m>=10?m:"0"+m;
             s=s>=10?s:"0"+s;
 
-//            ÏÔÊ¾³öµ±Ç°Ê±¼ä
+//            æ˜¾ç¤ºå‡ºå½“å‰æ—¶é—´
             currTime.innerHTML=h+":"+m+":"+s;
 
-//            ¸Ä±ä½ø¶ÈÌõµÄ¿í¶È£º µ±Ç°Ê±¼ä/×ÜÊ±¼ä
+//            æ”¹å˜è¿›åº¦æ¡çš„å®½åº¦ï¼š å½“å‰æ—¶é—´/æ€»æ—¶é—´
             var value=cTime/tTime;
 
             currProgress.style.width=value*100+"%";
 
         }
 
-//        È«ÆÁ
+//        å…¨å±
         extend.onclick=function(){
-//            È«ÆÁµÄh5´úÂë
+//            å…¨å±çš„h5ä»£ç 
             video.webkitRequestFullScreen();
         }
 
