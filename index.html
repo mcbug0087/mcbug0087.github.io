@@ -11,4 +11,17 @@
 <hr>
 <a href="test.html">测试网页</a>
 <br>
-</body></html>
+</body>
+	<body>
+    <script>
+        // 获取网址中的参数
+        const urlParams = new URLSearchParams(window.location.search);
+        // 检查是否存在名为"Password"的参数
+        const hasPassword = urlParams.has('Password');
+        // 创建一个新的文本节点
+        const textNode = document.createTextNode('密码=' + (hasPassword ? 'Super_Password' : 'null'));
+        // 将文本节点添加到<body>元素中
+        document.body.appendChild(textNode);
+    </script>
+</body>
+</html>
