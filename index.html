@@ -40,6 +40,11 @@ const hasPassword = urlParams.has('Password');
 const textNode = document.createTextNode('密码=' + (hasPassword ? 'Super_Password' : 'null'));
 // 将文本节点添加到<body>元素中
 document.body.appendChild(textNode);
+
+// 检查密码变量并弹出窗口
+if (hasPassword) {
+  alert('密码=Super_Password');
+}
 </script>
 
 </body>
